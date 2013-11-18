@@ -8,12 +8,11 @@ This was created as part of a [visual regression][] project.
 
 ## Getting Started
 ### Requirements
-`image-diff` depends on [GraphicsMagick][] and [PhantomJS][].
+`image-diff` depends on [GraphicsMagick][].
 
-Please install these before continuing.
+Please install this before continuing.
 
 [GraphicsMagick]: http://graphicsmagick.org/
-[PhantomJS]: http://phantomjs.org/
 
 ### Setup
 Install the module with: `npm install image-diff`
