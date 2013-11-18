@@ -1,4 +1,4 @@
-# image-diff [![Build status](https://travis-ci.org/twolfson/imagediff.png?branch=master)](https://travis-ci.org/twolfson/imagediff)
+# image-diff [![Build status](https://travis-ci.org/uber/image-diff.png?branch=master)](https://travis-ci.org/uber/image-diff)
 
 Create image differential between two images
 
