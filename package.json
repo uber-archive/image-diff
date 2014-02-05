@@ -1,7 +1,7 @@
 {
   "name": "image-diff",
   "description": "Create image differential between two images",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/uber/image-diff",
   "author": {
     "name": "Todd Wolfson",
