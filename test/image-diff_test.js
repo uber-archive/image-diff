@@ -1,6 +1,13 @@
 var assert = require('assert');
+var fs = require('fs');
+var os = require('os');
 var getPixels = require('get-pixels');
 var imageDiff = require('../lib/image-diff.js');
+
+var tmpDir = os.tmpdir ? os.tmpdir() : '/tmp';
+before(function () {
+  this.expectedTmpFiles = fs.readdirSync(tmpDir);
+});
 
 describe('image-diff', function () {
   describe('diffing different images', function () {
@@ -57,5 +64,12 @@ describe('image-diff', function () {
     it('asserts images are the same', function () {
       assert.strictEqual(this.imagesAreSame, true);
     });
+  });
+});
+
+describe('After running the tests', function () {
+  it('cleans up the temporary directory', function () {
+    var actualTmpFiles = fs.readdirSync(tmpDir);
+    assert.deepEqual(actualTmpFiles, this.expectedTmpFiles);
   });
 });
