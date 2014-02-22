@@ -8,11 +8,8 @@ matrix:
     - node_js: "0.11"
 
 install:
-  # Set up graphicsmagick
-  - ./test/install.sh
-
-  # Output graphicsmagick version
-  - gm version
+  # Output imagemagick version
+  - convert -version
 
   # Install dependencies
   - npm install
