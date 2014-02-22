@@ -1,4 +1,6 @@
 # image-diff changelog
+1.0.1 - Added example image to README
+
 1.0.0 - Moved to consistently use ImageMagick and fixed scaling regression (#11)
 
 0.5.0 - Added assert that `compare's stderr` contains 'all'
