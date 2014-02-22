@@ -6,6 +6,8 @@ This was created as part of a [visual regression][] project.
 
 [visual regression]: http://www.youtube.com/watch?v=1wHr-O6gEfc
 
+![Example diff](docs/example.png)
+
 ## Getting Started
 ### Requirements
 `image-diff` depends on [ImageMagick][].
@@ -45,6 +47,12 @@ Create an differential image between multiple images
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
+
+## Attribution
+The font used for the example image is [Arial][] 30pt bold and [Courier New][] 38pt.
+
+[Arial]: http://en.wikipedia.org/wiki/Arial
+[Courier New]: http://en.wikipedia.org/wiki/Courier_%28typeface%29#Courier_New
 
 ## License
 Copyright (c) 2013 Uber
