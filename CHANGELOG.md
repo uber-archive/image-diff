@@ -1,4 +1,6 @@
 # image-diff changelog
+0.5.0 - Added assert that `compare's stderr` contains 'all'
+
 0.4.0 - Added shell quoting and assertions to simplify debugging
 
 0.3.0 - Moved from `temporary` to `tmp` to stop creation of excess tempfiles
