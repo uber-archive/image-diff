@@ -31,7 +31,7 @@ describe('image-diff', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard.png',
       expectedImage: __dirname + '/test-files/white.png',
-      diffImage: __dirname + '/actual-files/different.png'
+      diffImage: __dirname + '/actual-files/different.png',
     });
     imageUtils.loadActual('different.png');
     imageUtils.loadExpected('different.png');
@@ -45,12 +45,51 @@ describe('image-diff', function () {
     });
   });
 
+  describe('diffing different images using lower threshold', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard.png',
+      expectedImage: __dirname + '/test-files/white.png',
+      diffImage: __dirname + '/actual-files/different.png',
+      threshold: 0.7
+    });
+    imageUtils.loadActual('different.png');
+    imageUtils.loadExpected('different.png');
+
+    it('asserts images are different', function () {
+      assert.strictEqual(this.imagesAreSame, false);
+    });
+
+    it('writes a highlighted image diff to disk', function () {
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
+
+  describe('diffing different images using higher threshold', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard.png',
+      expectedImage: __dirname + '/test-files/white.png',
+      diffImage: __dirname + '/actual-files/different2.png',
+      threshold: 0.8
+    });
+    imageUtils.loadActual('different2.png');
+    imageUtils.loadExpected('different.png');
+
+    it('asserts images are different', function () {
+      assert.strictEqual(this.imagesAreSame, true);
+    });
+
+    it('writes a highlighted image diff to disk', function () {
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
+
   describe('diffing the same image', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard.png',
       expectedImage: __dirname + '/test-files/checkerboard.png',
       diffImage: __dirname + '/actual-files/same.png'
     });
+
     imageUtils.loadActual('same.png');
     imageUtils.loadExpected('same.png');
 
@@ -67,7 +106,8 @@ describe('image-diff', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard-excess.png',
       expectedImage: __dirname + '/test-files/checkerboard.png',
-      diffImage: __dirname + '/actual-files/different-size.png'
+      diffImage: __dirname + '/actual-files/different-size.png',
+      threshold: 0.70
     });
     imageUtils.loadActual('different-size.png');
     imageUtils.loadExpected('different-size.png');
