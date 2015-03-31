@@ -45,14 +45,14 @@ describe('image-diff', function () {
     });
   });
 
-  describe('diffing different images using lower threshold', function () {
+  describe('diffing different images over a threshold', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard.png',
       expectedImage: __dirname + '/test-files/white.png',
-      diffImage: __dirname + '/actual-files/different.png',
-      threshold: 0.7
+      diffImage: __dirname + '/actual-files/over-threshold.png',
+      threshold: 0.2
     });
-    imageUtils.loadActual('different.png');
+    imageUtils.loadActual('over-threshold.png');
     imageUtils.loadExpected('different.png');
 
     it('asserts images are different', function () {
@@ -64,17 +64,17 @@ describe('image-diff', function () {
     });
   });
 
-  describe('diffing different images using higher threshold', function () {
+  describe('diffing different images under a threshold', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard.png',
       expectedImage: __dirname + '/test-files/white.png',
-      diffImage: __dirname + '/actual-files/different2.png',
-      threshold: 0.8
+      diffImage: __dirname + '/actual-files/under-threshold.png',
+      threshold: 0.9
     });
-    imageUtils.loadActual('different2.png');
+    imageUtils.loadActual('under-threshold.png');
     imageUtils.loadExpected('different.png');
 
-    it('asserts images are different', function () {
+    it('asserts images are similar enough', function () {
       assert.strictEqual(this.imagesAreSame, true);
     });
 
@@ -89,7 +89,6 @@ describe('image-diff', function () {
       expectedImage: __dirname + '/test-files/checkerboard.png',
       diffImage: __dirname + '/actual-files/same.png'
     });
-
     imageUtils.loadActual('same.png');
     imageUtils.loadExpected('same.png');
 
