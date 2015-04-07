@@ -45,6 +45,66 @@ describe('image-diff', function () {
     });
   });
 
+  describe('diffing the same image', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard.png',
+      expectedImage: __dirname + '/test-files/checkerboard.png',
+      diffImage: __dirname + '/actual-files/same.png'
+    });
+    imageUtils.loadActual('same.png');
+    imageUtils.loadExpected('same.png');
+
+    it('asserts images are the same', function () {
+      assert.strictEqual(this.imagesAreSame, true);
+    });
+
+    it('writes a clean image diff to disk', function () {
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
+
+  describe('diffing different sizes images', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard-excess.png',
+      expectedImage: __dirname + '/test-files/checkerboard.png',
+      diffImage: __dirname + '/actual-files/different-size.png',
+    });
+    imageUtils.loadActual('different-size.png');
+    imageUtils.loadExpected('different-size.png');
+
+    it('asserts images are different', function () {
+      assert.strictEqual(this.err, null);
+      assert.strictEqual(this.imagesAreSame, false);
+    });
+
+    it('writes a highlighted image diff to disk', function () {
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
+
+  // DEV: This is a regression test for https://github.com/uber/image-diff/pull/10
+  describe('diffing images which cannot scale into each other', function () {
+    var diffImage = __dirname + '/actual-files/horizontal-vertical.png';
+    runImageDiff({
+      actualImage: __dirname + '/test-files/horizontal.png',
+      expectedImage: __dirname + '/test-files/vertical.png',
+      diffImage: diffImage
+    });
+    imageUtils.loadActual('horizontal-vertical.png');
+    imageUtils.loadExpected('horizontal-vertical.png');
+
+    it('asserts images are different', function () {
+      assert.strictEqual(this.err, null);
+      assert.strictEqual(this.imagesAreSame, false);
+    });
+
+    it('writes an image diff to disk', function () {
+      var diffExists = fs.existsSync(diffImage);
+      assert.strictEqual(diffExists, true);
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
+
   describe('diffing different images over a threshold', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard.png',
@@ -79,67 +139,6 @@ describe('image-diff', function () {
     });
 
     it('writes a highlighted image diff to disk', function () {
-      assert.deepEqual(this.actualPixels, this.expectedPixels);
-    });
-  });
-
-  describe('diffing the same image', function () {
-    runImageDiff({
-      actualImage: __dirname + '/test-files/checkerboard.png',
-      expectedImage: __dirname + '/test-files/checkerboard.png',
-      diffImage: __dirname + '/actual-files/same.png'
-    });
-    imageUtils.loadActual('same.png');
-    imageUtils.loadExpected('same.png');
-
-    it('asserts images are the same', function () {
-      assert.strictEqual(this.imagesAreSame, true);
-    });
-
-    it('writes a clean image diff to disk', function () {
-      assert.deepEqual(this.actualPixels, this.expectedPixels);
-    });
-  });
-
-  describe('diffing different sizes images', function () {
-    runImageDiff({
-      actualImage: __dirname + '/test-files/checkerboard-excess.png',
-      expectedImage: __dirname + '/test-files/checkerboard.png',
-      diffImage: __dirname + '/actual-files/different-size.png',
-      threshold: 0.70
-    });
-    imageUtils.loadActual('different-size.png');
-    imageUtils.loadExpected('different-size.png');
-
-    it('asserts images are different', function () {
-      assert.strictEqual(this.err, null);
-      assert.strictEqual(this.imagesAreSame, false);
-    });
-
-    it('writes a highlighted image diff to disk', function () {
-      assert.deepEqual(this.actualPixels, this.expectedPixels);
-    });
-  });
-
-  // DEV: This is a regression test for https://github.com/uber/image-diff/pull/10
-  describe('diffing images which cannot scale into each other', function () {
-    var diffImage = __dirname + '/actual-files/horizontal-vertical.png';
-    runImageDiff({
-      actualImage: __dirname + '/test-files/horizontal.png',
-      expectedImage: __dirname + '/test-files/vertical.png',
-      diffImage: diffImage
-    });
-    imageUtils.loadActual('horizontal-vertical.png');
-    imageUtils.loadExpected('horizontal-vertical.png');
-
-    it('asserts images are different', function () {
-      assert.strictEqual(this.err, null);
-      assert.strictEqual(this.imagesAreSame, false);
-    });
-
-    it('writes an image diff to disk', function () {
-      var diffExists = fs.existsSync(diffImage);
-      assert.strictEqual(diffExists, true);
       assert.deepEqual(this.actualPixels, this.expectedPixels);
     });
   });
