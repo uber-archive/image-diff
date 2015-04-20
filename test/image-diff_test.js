@@ -32,7 +32,7 @@ describe('image-diff', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard.png',
       expectedImage: __dirname + '/test-files/white.png',
-      diffImage: __dirname + '/actual-files/different.png',
+      diffImage: __dirname + '/actual-files/different.png'
     });
     imageUtils.loadActual('different.png');
     imageUtils.loadExpected('different.png');
@@ -68,7 +68,7 @@ describe('image-diff', function () {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard-excess.png',
       expectedImage: __dirname + '/test-files/checkerboard.png',
-      diffImage: __dirname + '/actual-files/different-size.png',
+      diffImage: __dirname + '/actual-files/different-size.png'
     });
     imageUtils.loadActual('different-size.png');
     imageUtils.loadExpected('different-size.png');
