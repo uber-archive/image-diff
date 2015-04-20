@@ -23,6 +23,7 @@ rimraf.sync(__dirname + '/actual-files');
 // DEV: This is re-used at end to make sure we clean up tmp files
 var tmpDir = os.tmpdir ? os.tmpdir() : '/tmp';
 before(function () {
+  this.timeout(5000);
   this.expectedTmpFiles = fs.readdirSync(tmpDir);
 });
 
