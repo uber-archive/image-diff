@@ -1,4 +1,6 @@
 # image-diff changelog
+1.0.2 - Added release script and documentation
+
 1.0.1 - Added example image to README
 
 1.0.0 - Moved to consistently use ImageMagick and fixed scaling regression (#11)
