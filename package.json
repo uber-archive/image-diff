@@ -36,12 +36,15 @@
     "shell-quote": "~1.4.1"
   },
   "devDependencies": {
-    "mocha": "~1.11.0",
+    "foundry": "~3.1.0",
+    "foundry-release-git": "~1.1.0",
+    "foundry-release-npm": "~1.1.0",
+    "get-pixels": "~1.0.1",
     "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.11",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-watch": "~0.4.0",
-    "get-pixels": "~1.0.1",
-    "grunt-cli": "~0.1.11",
+    "mocha": "~1.11.0",
     "rimraf": "~2.2.6"
   },
   "keywords": [
