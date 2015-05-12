@@ -22,6 +22,9 @@
     }
   ],
   "main": "lib/image-diff",
+  "files": [
+    "lib/"
+  ],
   "engines": {
     "node": ">= 0.8.0"
   },
