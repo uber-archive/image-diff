@@ -3,6 +3,7 @@
 var assert = require('assert');
 var fs = require('fs');
 var os = require('os');
+var path = require('path');
 var rimraf = require('rimraf');
 var imageUtils = require('./utils/image.js');
 var imageDiff = require('../lib/image-diff.js');
@@ -19,7 +20,7 @@ function runImageDiff(options) {
 }
 
 // Clean up actual-files
-rimraf.sync(__dirname + '/actual-files');
+rimraf.sync(path.join(__dirname, '/actual-files'));
 
 // Start of tests
 // DEV: This is re-used at end to make sure we clean up tmp files
@@ -31,9 +32,9 @@ before(function () {
 describe('image-diff', function () {
   describe('diffing different images', function () {
     runImageDiff({
-      actualImage: __dirname + '/test-files/checkerboard.png',
-      expectedImage: __dirname + '/test-files/white.png',
-      diffImage: __dirname + '/actual-files/different.png'
+      actualImage: path.join(__dirname, '/test-files/checkerboard.png'),
+      expectedImage: path.join(__dirname, '/test-files/white.png'),
+      diffImage: path.join(__dirname, '/actual-files/different.png')
     });
     imageUtils.loadActual('different.png');
     imageUtils.loadExpected('different.png');
@@ -49,9 +50,9 @@ describe('image-diff', function () {
 
   describe('diffing the same image', function () {
     runImageDiff({
-      actualImage: __dirname + '/test-files/checkerboard.png',
-      expectedImage: __dirname + '/test-files/checkerboard.png',
-      diffImage: __dirname + '/actual-files/same.png'
+      actualImage: path.join(__dirname, '/test-files/checkerboard.png'),
+      expectedImage: path.join(__dirname, '/test-files/checkerboard.png'),
+      diffImage: path.join(__dirname, '/actual-files/same.png')
     });
     imageUtils.loadActual('same.png');
     imageUtils.loadExpected('same.png');
@@ -67,9 +68,9 @@ describe('image-diff', function () {
 
   describe('diffing different sizes images', function () {
     runImageDiff({
-      actualImage: __dirname + '/test-files/checkerboard-excess.png',
-      expectedImage: __dirname + '/test-files/checkerboard.png',
-      diffImage: __dirname + '/actual-files/different-size.png'
+      actualImage: path.join(__dirname, '/test-files/checkerboard-excess.png'),
+      expectedImage: path.join(__dirname, '/test-files/checkerboard.png'),
+      diffImage: path.join(__dirname, '/actual-files/different-size.png')
     });
     imageUtils.loadActual('different-size.png');
     imageUtils.loadExpected('different-size.png');
@@ -86,10 +87,10 @@ describe('image-diff', function () {
 
   // DEV: This is a regression test for https://github.com/uber/image-diff/pull/10
   describe('diffing images which cannot scale into each other', function () {
-    var diffImage = __dirname + '/actual-files/horizontal-vertical.png';
+    var diffImage = path.join(__dirname, '/actual-files/horizontal-vertical.png');
     runImageDiff({
-      actualImage: __dirname + '/test-files/horizontal.png',
-      expectedImage: __dirname + '/test-files/vertical.png',
+      actualImage: path.join(__dirname, '/test-files/horizontal.png'),
+      expectedImage: path.join(__dirname, '/test-files/vertical.png'),
       diffImage: diffImage
     });
     imageUtils.loadActual('horizontal-vertical.png');
