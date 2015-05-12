@@ -1,4 +1,4 @@
-# image-diff [![Build status](https://travis-ci.org/uber/image-diff.png?branch=master)](https://travis-ci.org/uber/image-diff)
+# image-diff [![Build status](https://travis-ci.org/uber/image-diff.svg?branch=master)](https://travis-ci.org/uber/image-diff)
 
 Create image differential between two images
 
@@ -19,7 +19,7 @@ Please install this before continuing.
 ### Setup
 Install the module with: `npm install image-diff`
 
-```javascript
+```js
 var imageDiff = require('image-diff');
 imageDiff({
   actualImage: 'checkerboard.png',
