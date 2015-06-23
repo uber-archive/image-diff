@@ -23,6 +23,7 @@ rimraf.sync(__dirname + '/actual-files');
 // DEV: This is re-used at end to make sure we clean up tmp files
 var tmpDir = os.tmpdir ? os.tmpdir() : '/tmp';
 before(function () {
+  this.timeout(5000);
   this.expectedTmpFiles = fs.readdirSync(tmpDir);
 });
 
@@ -113,6 +114,44 @@ describe('image-diff', function () {
     it('writes an image diff to disk', function () {
       var diffExists = fs.existsSync(diffImage);
       assert.strictEqual(diffExists, true);
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
+
+  describe('diffing different images over a threshold', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard.png',
+      expectedImage: __dirname + '/test-files/white.png',
+      diffImage: __dirname + '/actual-files/over-threshold.png',
+      threshold: 0.2
+    });
+    imageUtils.loadActual('over-threshold.png');
+    imageUtils.loadExpected('different.png');
+
+    it('asserts images are different', function () {
+      assert.strictEqual(this.imagesAreSame, false);
+    });
+
+    it('writes a highlighted image diff to disk', function () {
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
+
+  describe('diffing different images under a threshold', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard.png',
+      expectedImage: __dirname + '/test-files/white.png',
+      diffImage: __dirname + '/actual-files/under-threshold.png',
+      threshold: 0.9
+    });
+    imageUtils.loadActual('under-threshold.png');
+    imageUtils.loadExpected('different.png');
+
+    it('asserts images are similar enough', function () {
+      assert.strictEqual(this.imagesAreSame, true);
+    });
+
+    it('writes a highlighted image diff to disk', function () {
       assert.deepEqual(this.actualPixels, this.expectedPixels);
     });
   });
