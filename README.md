@@ -43,7 +43,7 @@ Create an differential image between multiple images
         - options.actualImage **must** exist
     - options.expectedImage `String` - Path to expected image file
         - If options.expectedImage does not exist, a transparent image with the same height/width will be created.
-    - options.diffImage `String` - Path to output differential image
+    - options.diffImage `String` - Optional path to output differential image
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
