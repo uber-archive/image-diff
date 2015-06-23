@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "async": "~0.2.9",
+    "buffered-spawn": "~1.1.1",
     "gm": "~1.13.3",
     "mkdirp": "~0.3.5",
-    "tmp": "0.0.23",
-    "shell-quote": "~1.4.1"
+    "tmp": "0.0.23"
   },
   "devDependencies": {
     "foundry": "~3.1.0",

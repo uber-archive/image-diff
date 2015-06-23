@@ -82,6 +82,18 @@ describe('image-diff', function () {
     });
   });
 
+  describe('diffing different images without an output image', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard.png',
+      expectedImage: __dirname + '/test-files/white.png'
+    });
+
+    it('asserts images are different', function () {
+      assert.strictEqual(this.err, null);
+      assert.strictEqual(this.imagesAreSame, false);
+    });
+  });
+
   // DEV: This is a regression test for https://github.com/uber/image-diff/pull/10
   describe('diffing images which cannot scale into each other', function () {
     var diffImage = __dirname + '/actual-files/horizontal-vertical.png';

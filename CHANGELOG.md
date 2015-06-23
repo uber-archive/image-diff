@@ -1,4 +1,6 @@
 # image-diff changelog
+1.1.0 - Added support for no output image
+
 1.0.3 - Repaired Travis CI tests by dropping `node@0.8` and adding `node@0.12`/`iojs`
 
 1.0.2 - Added release script and documentation
