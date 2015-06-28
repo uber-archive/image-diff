@@ -116,6 +116,26 @@ describe('image-diff', function () {
       assert.deepEqual(this.actualPixels, this.expectedPixels);
     });
   });
+
+  describe('diffing images with shadow on', function() {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard-excess.png',
+      expectedImage: __dirname + '/test-files/checkerboard.png',
+      diffImage: __dirname + '/actual-files/different-size-shadow.png',
+      shadow: true
+    });
+    imageUtils.loadActual('different-size-shadow.png');
+    imageUtils.loadExpected('different-size-shadow.png');
+
+    it('asserts images are different', function () {
+      assert.strictEqual(this.err, null);
+      assert.strictEqual(this.imagesAreSame, false);
+    });
+
+    it('writes a highlighted image diff to disk', function () {
+      assert.deepEqual(this.actualPixels, this.expectedPixels);
+    });
+  });
 });
 
 describe('After running the tests', function () {

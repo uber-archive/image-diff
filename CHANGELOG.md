@@ -1,4 +1,6 @@
 # image-diff changelog
+1.2.0 - Added support for showing shadow image in diff image via @064678147 in #25
+
 1.1.0 - Added support for no output image
 
 1.0.3 - Repaired Travis CI tests by dropping `node@0.8` and adding `node@0.12`/`iojs`
