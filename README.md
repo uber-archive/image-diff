@@ -44,6 +44,9 @@ Create an differential image between multiple images
     - options.expectedImage `String` - Path to expected image file
         - If options.expectedImage does not exist, a transparent image with the same height/width will be created.
     - options.diffImage `String` - Optional path to output differential image
+    - options.shadow `Boolean` - Optional flag to indicate if we should draw a shadow of the unchanged parts of the images
+        - For example, if an image is `+` and we diff with `-`, then the image will have `|` be red but also contain a faded `-`
+        - By default, this options is `false` meaning a shadow will not be drawn
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
