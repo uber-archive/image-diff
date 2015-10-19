@@ -1,4 +1,6 @@
 # image-diff changelog
+1.3.0 - Fixed support for fractional differences via @jacobp100 in #29
+
 1.2.0 - Added support for showing shadow image in diff image via @064678147 in #25
 
 1.1.0 - Added support for no output image
