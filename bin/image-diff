@@ -1,0 +1,39 @@
+#!/usr/bin/env node
+// Load in our dependencies
+var program = require('commander');
+var pkg = require('../package.json');
+var imageDiff = require('../');
+
+// Configure our CLI
+program.name = pkg.name;
+program
+  .version(pkg.version)
+  .usage('[options] <actual-image> <expected-image> [diff-image]')
+  .option('--shadow', 'Draw a shadow of unchanges parts on diff image')
+  .action(function handleRun (actualImage, expectedImage, diffImage, program) {
+    // If there is no program, then assume diffImage was left out
+    if (program === undefined) {
+      program = diffImage;
+      diffImage = undefined;
+    }
+
+    // Run our diff
+    imageDiff({
+      actualImage: actualImage,
+      diffImage: diffImage,
+      expectedImage: expectedImage,
+      shadow: program.shadow
+    }, function handleImageDiff (err, imagesAreSame) {
+      // If there was an error, throw it
+      if (err) {
+        throw err;
+      }
+
+      // Otherwise, exit based on the result
+      var exitCode = imagesAreSame ? 0 : 1;
+      process.exit(exitCode);
+    });
+  });
+
+// Parse our CLI arguments
+program.parse(process.argv);
