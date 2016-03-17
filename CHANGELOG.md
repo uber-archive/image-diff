@@ -1,4 +1,6 @@
 # image-diff changelog
+1.5.0 - Added `image-diff` executable
+
 1.4.0 - Moved from `crop` to `extent`. Fixes #32 indirectly
 
 1.3.0 - Fixed support for fractional differences via @jacobp100 in #29

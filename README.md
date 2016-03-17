@@ -48,6 +48,37 @@ Create an differential image between multiple images
         - For example, if an image is `+` and we diff with `-`, then the image will have `|` be red but also contain a faded `-`
         - By default, this options is `false` meaning a shadow will not be drawn
 
+### CLI usage
+We offer an `image-diff` executable to diff from the CLI. When images match, its exit code will be `0`. When they don't match, then it will be non-zero (e.g. `1`).
+
+```
+$ image-diff --help
+
+  Usage: image-diff [options] <actual-image> <expected-image> [diff-image]
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+    --shadow       Draw a shadow of unchanges parts on diff image
+
+```
+
+Example usage:
+
+```bash
+# Images don't match
+image-diff checkerboard.png white.png diff.png
+echo $?
+# 1
+# We can look at `diff.png` for the diff result
+
+# Images do match
+image-diff checkerboard.png white.png
+echo $?
+# 0
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
 
