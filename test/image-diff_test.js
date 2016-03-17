@@ -117,6 +117,18 @@ describe('image-diff', function () {
     });
   });
 
+  describe('diffing the same image where 1 has a transparent background', function () {
+    runImageDiff({
+      actualImage: __dirname + '/test-files/checkerboard-transparent.png',
+      expectedImage: __dirname + '/test-files/checkerboard.png',
+      diffImage: __dirname + '/actual-files/different-transparent.png'
+    });
+
+    it('asserts images are the different', function () {
+      assert.strictEqual(this.imagesAreSame, false);
+    });
+  });
+
   describe('diffing images with shadow on', function() {
     runImageDiff({
       actualImage: __dirname + '/test-files/checkerboard-excess.png',
