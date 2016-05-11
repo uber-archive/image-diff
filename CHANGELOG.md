@@ -1,4 +1,6 @@
 # image-diff changelog
+1.6.0 - Added `getFullResult` and `getRawResult` methods
+
 1.5.1 - Upgraded to `gm@1.21.1` to resolve security advisory via @jacobp100 in #38
 
 1.5.0 - Added `image-diff` executable
