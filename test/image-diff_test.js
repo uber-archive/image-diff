@@ -14,6 +14,10 @@ function runImageDiff(options) {
       done();
     });
   });
+  after(function cleanup () {
+    delete this.err;
+    delete this.imagesAreSame;
+  });
 }
 
 // Clean up actual-files
