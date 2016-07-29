@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # Exit on first error
 set -e
 
