@@ -3,4 +3,4 @@
 set -e
 
 # Run foundry with arguments
-./node_modules/.bin/foundry release $*
+./node_modules/.bin/foundry release "$@"
