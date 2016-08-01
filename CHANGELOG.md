@@ -1,4 +1,6 @@
 # image-diff changelog
+1.6.3 - Fixed word splitting in `release.sh` via @andlrc in #47
+
 1.6.2 - Updated Travis CI badge from PNG to SVG via @amilajack in #44
 
 1.6.1 - Updated Node.js versions in Travis CI via @amilajack in #42
