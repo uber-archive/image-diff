@@ -20,12 +20,13 @@ Please install this before continuing.
 Install the module with: `npm install image-diff`
 
 ```javascript
-var imageDiff = require('image-diff');
+const imageDiff = require('image-diff');
+
 imageDiff({
   actualImage: 'checkerboard.png',
   expectedImage: 'white.png',
   diffImage: 'difference.png',
-}, function (err, imagesAreSame) {
+}, (err, imagesAreSame) => {
   // error will be any errors that occurred
   // imagesAreSame is a boolean whether the images were the same or not
   // diffImage will have an image which highlights differences
@@ -69,12 +70,13 @@ Same as `imageDiff` but yields a fuller result
 **Example:**
 
 ```javascript
-var imageDiff = require('image-diff');
+const imageDiff = require('image-diff');
+
 imageDiff.getFullResult({
   actualImage: 'checkerboard.png',
   expectedImage: 'white.png',
   diffImage: 'difference.png',
-}, function (err, result) {
+}, (err, result) => {
   // result = {total: 46340.2, difference: 0.707107}
 });
 ```
