@@ -1,4 +1,14 @@
 # image-diff [![Build Status](https://travis-ci.org/uber/image-diff.svg?branch=master)](https://travis-ci.org/uber/image-diff)
+# Project deprecated
+We no longer have any active maintainers on this project and as a result have halted maintenance.
+
+As a replacement, please see alternative projects like `looks-same` and `pixelmatch`:
+
+https://github.com/gemini-testing/looks-same
+
+https://github.com/mapbox/pixelmatch
+
+--------------------
 
 Create image differential between two images
 

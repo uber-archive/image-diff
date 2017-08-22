@@ -1,4 +1,6 @@
 # image-diff changelog
+2.0.0 - Deprecated project
+
 1.6.3 - Fixed word splitting in `release.sh` via @andlrc in #47
 
 1.6.2 - Updated Travis CI badge from PNG to SVG via @amilajack in #44
